@@ -9,15 +9,12 @@ app.use(serve('public'))
 const server = http.createServer(app.callback())
 const io = socketIO(server)
 
-const pad = n => ('00' + n).slice(-2)
-const curTime = () => {
-  let d = new Date()
-  return pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds())
-}
-
 io.on('connection', function(socket) {
-  socket.on('message', function(msg) {
-    io.emit('message', curTime() + ' - ' + msg);
+  socket.on('message', function(data) {
+    io.emit('message', JSON.stringify({
+      time: Date.now(),
+      msg: data
+    }));
   });
 });
 

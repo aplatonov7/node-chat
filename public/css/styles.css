@@ -39,9 +39,20 @@ h1 {
 
 .chat__message {
     display: block;
-    padding: 0.8em 1em;
+    padding: 0.8em 5em 0.8em 1em;
     border-bottom: 1px solid #eee;
-    animation: fadeIn 0.2s ease-out
+    min-height: 2.6em;
+    animation: fadeIn 0.2s ease-out;
+    position: relative;
+}
+
+.chat__message-time {
+    color: #ccc;
+    text-align: right;
+    padding: 0.8em 1em;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 .chat__btn {
